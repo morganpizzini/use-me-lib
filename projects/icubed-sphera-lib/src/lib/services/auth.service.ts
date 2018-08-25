@@ -4,7 +4,7 @@ import { Observable, from, of } from 'rxjs';
 import { HttpClientBase } from './common/http-client-base';
 // import { UserContract } from '../models/UserContract';
 import { LoginContract } from '../models/requests/login-contract';
-import { AppConfigurationService } from './routings/routing-configuration.service';
+import { RoutingConfigurationService } from './routings/routing-configuration.service';
 import { UserContract } from '../models/user-contract';
 import { EnvironmentInterface } from '../interfaces/environments';
 import { ApplicationRoute } from './routings/application-route';
@@ -19,9 +19,9 @@ export class AuthService extends HttpClientBase {
   // {
   // login:'login'
   // }
-  constructor(httpClient: HttpClient, @Inject('env') private env: EnvironmentInterface,
+  constructor(httpClient: HttpClient, @Inject('env') env: EnvironmentInterface,
     // @Inject('routes') private routes: ApplicationRoute,
-  private appConfiguration: AppConfigurationService) {
+  private appConfiguration: RoutingConfigurationService) {
     super(httpClient, env.apiBaseUrl);
   }
   /**

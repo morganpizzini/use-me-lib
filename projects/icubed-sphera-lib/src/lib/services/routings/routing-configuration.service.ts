@@ -1,25 +1,18 @@
-import { Injectable } from '@angular/core';
-import { ApplicationRoute } from './application-route';
-
-
+import { Injectable, Inject } from '@angular/core';
+import { ApplicationBackEnd } from './application-backend';
 
 @Injectable()
-export class AppConfigurationService {
-    private routePrefix = 'api';
-    private urls: ApplicationRoute;
+export class RoutingConfigurationService {
     /**
      *
      */
-    constructor(routePrefix: string,
-        urls: ApplicationRoute) {
-        this.routePrefix = routePrefix;
-        this.urls = urls;
+    constructor(@Inject('bkend') private appBackEnd: ApplicationBackEnd) {
     }
     private resolveUrl(name: string) {
         if (!name) {
             return '';
         }
-        const currentUrl = this.urls[name];
+        const currentUrl = this.appBackEnd.routes[name];
         if (!currentUrl) {
             return '';
         }
@@ -29,7 +22,7 @@ export class AppConfigurationService {
 
         // let compiledUrl = this.env.apiBaseUrl + this.resolveUrl(name);
         // work with partial urls
-        let compiledUrl = this.routePrefix ? `${this.routePrefix}` : '';
+        let compiledUrl = this.appBackEnd.routePrefix ? `${this.appBackEnd.routePrefix}` : '';
         // resolve url name
         // if (typeof name === 'string') {
             compiledUrl += this.resolveUrl(name);

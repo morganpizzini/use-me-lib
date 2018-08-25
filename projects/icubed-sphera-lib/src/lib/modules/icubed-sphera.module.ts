@@ -8,11 +8,11 @@ import { BusyIndicatorComponent } from '../utils/busy-indicator.component';
 import { ReadableSecondsPipe } from '../pipes/readable-seconds.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EnvironmentInterface } from '../interfaces/environments';
-import { AppConfigurationService } from '../services/routings/routing-configuration.service';
+import { RoutingConfigurationService } from '../services/routings/routing-configuration.service';
 import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
-import { ApplicationRoute } from '../services/common';
+import { ApplicationRoute, ApplicationBackEnd } from '../services/common';
 
 @NgModule({
     declarations: [
@@ -39,14 +39,16 @@ import { ApplicationRoute } from '../services/common';
 export class IcubedSpheraModule {
     // public static forRoot()
     public static forRoot(environment: EnvironmentInterface,
-        // routes: ApplicationRoute
-        // sessionHolder: SessionHolderInterface)
+        appBackend: ApplicationBackEnd
     )
         : ModuleWithProviders {
+        if (!appBackend || !appBackend.routes || !appBackend.routes['login']) {
+            throw new Error('Route "login" not found in configuration');
+        }
         return {
             ngModule: IcubedSpheraModule,
             providers: [
-                AppConfigurationService,
+                RoutingConfigurationService,
                 AuthService,
                 ToastService,
                 RoutingState,
@@ -54,10 +56,10 @@ export class IcubedSpheraModule {
                     provide: 'env',
                     useValue: environment
                 },
-                // {
-                //     provide: 'routes',
-                //     useValue: routes
-                // }
+                {
+                    provide: 'bkend',
+                    useValue: appBackend
+                },
             ]
         };
     }

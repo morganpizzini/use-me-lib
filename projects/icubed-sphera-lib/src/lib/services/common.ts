@@ -5,6 +5,7 @@ export { ToastService } from './toast.service';
 
 export { BaseRoute } from './routings/base-route';
 export { ApplicationRoute } from './routings/application-route';
-export { AppConfigurationService } from './routings/routing-configuration.service';
+export { ApplicationBackEnd } from './routings/application-backend';
+export { RoutingConfigurationService } from './routings/routing-configuration.service';
 // handle navigation back
 export { RoutingState } from './routing-state.service';
