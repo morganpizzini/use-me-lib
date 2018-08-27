@@ -15,9 +15,9 @@ gulp.task('upgrade-v', function (cb) {
         return;
     }
     console.log('Upgrading version, use --skipv for skip');
-    gulp.src('./projects/icubed-sphera-lib/package.json')
+    gulp.src('./projects/potara-lib/package.json')
         .pipe(bump({ type: 'patch' }))
-        .pipe(gulp.dest('./projects/icubed-sphera-lib/'))
+        .pipe(gulp.dest('./projects/potara-lib/'))
         .on('end', cb);
 });
 

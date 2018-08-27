@@ -122,38 +122,38 @@
         }
       }
     },
-    "icubed-sphera-lib": {
-      "root": "projects/icubed-sphera-lib",
-      "sourceRoot": "projects/icubed-sphera-lib/src",
+    "potara-lib": {
+      "root": "projects/potara-lib",
+      "sourceRoot": "projects/potara-lib/src",
       "projectType": "library",
       "prefix": "isl",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/icubed-sphera-lib/tsconfig.lib.json",
-            "project": "projects/icubed-sphera-lib/ng-package.json"
+            "tsConfig": "projects/potara-lib/tsconfig.lib.json",
+            "project": "projects/potara-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/icubed-sphera-lib/ng-package.prod.json"
+              "project": "projects/potara-lib/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/icubed-sphera-lib/src/test.ts",
-            "tsConfig": "projects/icubed-sphera-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/icubed-sphera-lib/karma.conf.js"
+            "main": "projects/potara-lib/src/test.ts",
+            "tsConfig": "projects/potara-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/potara-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/icubed-sphera-lib/tsconfig.lib.json",
-              "projects/icubed-sphera-lib/tsconfig.spec.json"
+              "projects/potara-lib/tsconfig.lib.json",
+              "projects/potara-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

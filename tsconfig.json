@@ -17,11 +17,11 @@
       "dom"
     ],
     "paths": {
-      "icubed-sphera-lib": [
-        "dist/icubed-sphera-lib"
+      "potara-lib": [
+        "dist/potara-lib"
       ],
-      "icubed-sphera-lib/*": [
-        "dist/icubed-sphera-lib/*"
+      "potara-lib/*": [
+        "dist/potara-lib/*"
       ]
     }
   }

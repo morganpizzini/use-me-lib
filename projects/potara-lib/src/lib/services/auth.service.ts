@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from, of } from 'rxjs';
 import { HttpClientBase } from './common/http-client-base';
 // import { UserContract } from '../models/UserContract';
-import { LoginContract } from '../models/requests/login-contract';
+import { LoginRequest } from '../models/requests/login-request';
 import { RoutingConfigurationService } from './routings/routing-configuration.service';
 import { UserContract } from '../models/user-contract';
 import { EnvironmentInterface } from '../interfaces/environments';
@@ -29,7 +29,7 @@ export class AuthService extends HttpClientBase {
       * @param userName User name
       * @param password Password
       */
-  public login(contract: LoginContract): Observable<any> {
+  public login(contract: LoginRequest): Observable<any> {
 
     // Compose request
     const request: any = {

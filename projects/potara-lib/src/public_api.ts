@@ -1,5 +1,5 @@
 /*
- * Public API Surface of icubed-sphera-lib
+ * Public API Surface of potara-lib
  */
 
 // interfaces

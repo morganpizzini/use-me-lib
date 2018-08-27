@@ -12,7 +12,7 @@ import { RoutingConfigurationService } from '../services/routings/routing-config
 import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
-import { ApplicationRoute, ApplicationBackEnd } from '../services/common';
+import { ApplicationBackEnd } from '../services/common';
 
 @NgModule({
     declarations: [
@@ -36,7 +36,7 @@ import { ApplicationRoute, ApplicationBackEnd } from '../services/common';
         BadgeComponent
     ],
 })
-export class IcubedSpheraModule {
+export class PotaraModule {
     // public static forRoot()
     public static forRoot(environment: EnvironmentInterface,
         appBackend: ApplicationBackEnd
@@ -46,7 +46,7 @@ export class IcubedSpheraModule {
             throw new Error('Route "login" not found in configuration');
         }
         return {
-            ngModule: IcubedSpheraModule,
+            ngModule: PotaraModule,
             providers: [
                 RoutingConfigurationService,
                 AuthService,

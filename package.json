@@ -8,9 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build_lib": "ng build --prod icubed-sphera-lib",
-    "npm_pack": "cd dist/icubed-sphera-lib && npm pack",
-    "npm_publish": "cd dist/icubed-sphera-lib && npm publish",
+    "build_lib": "ng build --prod potara-lib",
+    "npm_pack": "cd dist/potara-lib && npm pack",
+    "npm_publish": "cd dist/potara-lib && npm publish",
     "package": "npm run build_lib && npm run npm_pack",
     "publish": "npm run build_lib && npm run npm_publish"
   },
