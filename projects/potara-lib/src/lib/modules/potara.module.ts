@@ -13,6 +13,7 @@ import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
 import { ApplicationBackEnd } from '../services/common';
+import { ConfirmModalComponent } from '../utils/confirm-modal.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ApplicationBackEnd } from '../services/common';
         NoElementPipe,
         ReadableSecondsPipe,
         BusyIndicatorComponent,
-        BadgeComponent
+        BadgeComponent,
+        ConfirmModalComponent
     ],
     imports: [
         HttpClientModule,
@@ -29,12 +31,17 @@ import { ApplicationBackEnd } from '../services/common';
     ],
     exports: [
         HttpClientModule,
+        CommonModule,
+        NgbModule,
         EnumToListPipe,
         NoElementPipe,
         ReadableSecondsPipe,
         BusyIndicatorComponent,
         BadgeComponent
     ],
+    entryComponents: [
+        ConfirmModalComponent
+    ]
 })
 export class PotaraModule {
     // public static forRoot()

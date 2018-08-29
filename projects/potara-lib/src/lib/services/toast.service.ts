@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 // import * as toast from 'toastr';
 import * as  toast from 'toastr';
 // declare var toast: any;
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class ToastService {
 
     constructor() {
