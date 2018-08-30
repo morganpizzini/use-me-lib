@@ -1,49 +1,44 @@
 var gulp = require('gulp');
+var requireDir = require('require-dir');
 var runSequence = require('run-sequence');
-var exec = require('child_process').exec;
-var clean = require('gulp-clean');
-const argv = require('yargs').argv;
-var fs = require('fs');
-var bump = require('gulp-bump');
+const argv = require('yargs')
+    .alias('m', 'message')
+    .alias('sv', 'skipv').argv;
+// Require all tasks.
+requireDir('./gulp/tasks', { recurse: true });
 
-var distFolder = 'dist/';
 
-gulp.task('upgrade-v', function (cb) {
-    if (argv.skipv) {
-        console.log('Versioning skipped');
-        cb();
-        return;
-    }
-    console.log('Upgrading version, use --skipv for skip');
-    gulp.src('./projects/potara-lib/package.json')
-        .pipe(bump({ type: 'patch' }))
-        .pipe(gulp.dest('./projects/potara-lib/'))
-        .on('end', cb);
-});
 
-gulp.task('build', function (cb) {
-    //build angular
-    exec('npm run build_lib', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
-    });
-});
+/**
+ * set default task to helper
+ * for list all tasks
+ */
+gulp.task('default', ['help']);
 
-gulp.task('clean', function () {
-    return gulp.src(distFolder, { read: false })
-        .pipe(clean());
-});
-
-gulp.task('npm-publish', function (cb) {
-    //build angular
-    exec('npm run npm_publish', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
-    });
-});
-
+/**
+ * Publish library to npm repository
+ *
+ * @task {publish} 
+ * @group {Public Gulpfile}
+ * @order {11}
+ * @arg {skipv} (--skipv) skip version upgrading
+ */
 gulp.task('publish', function (cb) {
     runSequence('clean', 'upgrade-v', 'build', 'npm-publish', cb);
+});
+
+/**
+ * Git flow for push to remote repository
+ *
+ * @task {gitsend} 
+ * @group {Public Gulpfile}
+ * @order {12}
+ * @arg {message} [--m] message message for git commit
+ */
+gulp.task('gitsend', function (cb) {
+    if (!argv.message || argv.message === true) {
+        console.log('No message for git');
+        return;
+    }
+    runSequence('add', 'commit', 'push', cb);
 });

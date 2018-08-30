@@ -1,0 +1,2 @@
+
+exports.distFolder = 'dist/';
