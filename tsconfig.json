@@ -24,5 +24,6 @@
         "dist/potara-lib/*"
       ]
     }
-  }
+  },
+  "exclude": ["dist"]
 }

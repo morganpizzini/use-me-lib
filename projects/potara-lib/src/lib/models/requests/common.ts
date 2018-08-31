@@ -1,1 +1,1 @@
-export {LoginRequest} from './login-request';
+export { SignUpRequest } from './signup-request';

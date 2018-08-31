@@ -14,6 +14,7 @@ import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
 import { ApplicationBackEnd } from '../services/common';
 import { ConfirmModalComponent } from '../utils/confirm-modal.component';
+import LibRoutes from '../models/library/lib-routes';
 
 @NgModule({
     declarations: [
@@ -49,8 +50,8 @@ export class PotaraModule {
         appBackend: ApplicationBackEnd
     )
         : ModuleWithProviders {
-        if (!appBackend || !appBackend.routes || !appBackend.routes['login']) {
-            throw new Error('Route "login" not found in configuration');
+        if (!appBackend || !appBackend.routes || !appBackend.routes[LibRoutes.login] || !appBackend.routes[LibRoutes.signup]) {
+            throw new Error('Some routes are NOT found in configuration, lib required ' + JSON.stringify(LibRoutes));
         }
         return {
             ngModule: PotaraModule,

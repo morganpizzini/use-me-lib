@@ -3,42 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from, of } from 'rxjs';
 import { HttpClientBase } from './common/http-client-base';
 // import { UserContract } from '../models/UserContract';
-import { LoginRequest } from '../models/requests/login-request';
 import { RoutingConfigurationService } from './routings/routing-configuration.service';
 import { UserContract } from '../models/user-contract';
 import { EnvironmentInterface } from '../interfaces/environments';
-import { ApplicationRoute } from './routings/application-route';
+import LibRoutes from '../models/library/lib-routes';
+import { SignUpRequest } from '../models/requests/signup-request';
 
 @Injectable()
 export class AuthService extends HttpClientBase {
 
-  logInRoute = 'login';
-  // creare una classe aposita per validare le stringhe di route..
-  // che verrà iniettata all'inizializzazione
-  // es:
-  // {
-  // login:'login'
-  // }
   constructor(httpClient: HttpClient, @Inject('env') env: EnvironmentInterface,
+
     // @Inject('routes') private routes: ApplicationRoute,
-  private appConfiguration: RoutingConfigurationService) {
+    private appConfiguration: RoutingConfigurationService) {
     super(httpClient, env.apiBaseUrl);
-  }
-  /**
-      * Executes sign-in on remote platform (ReduxPattern)
-      * @param userName User name
-      * @param password Password
-      */
-  public login(contract: LoginRequest): Observable<any> {
-
-    // Compose request
-    const request: any = {
-      userName: contract.username,
-      password: contract.password
-    };
-
-    // Invoke base method
-    return this.invoke('POST', this.appConfiguration.url(this.logInRoute), request);
   }
   /**
        * Executes sign-in on remote platform
@@ -54,7 +32,16 @@ export class AuthService extends HttpClientBase {
     };
 
     // Invoke base method
-    return this.invoke('POST', this.appConfiguration.url(this.logInRoute), request);
+    return this.invoke('POST', this.appConfiguration.url(LibRoutes.login), request);
+  }
+  /**
+       * Executes sign-up on remote platform
+       * @param request Signup request
+       */
+  public signUp(request: SignUpRequest): Observable<UserContract> {
+
+    // Invoke base method
+    return this.invoke('POST', this.appConfiguration.url(LibRoutes.signup), request);
   }
   logout() {
     return of(true);
