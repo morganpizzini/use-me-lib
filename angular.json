@@ -126,7 +126,7 @@
       "root": "projects/potara-lib",
       "sourceRoot": "projects/potara-lib/src",
       "projectType": "library",
-      "prefix": "isl",
+      "prefix": "pot",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

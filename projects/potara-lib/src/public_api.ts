@@ -2,6 +2,9 @@
  * Public API Surface of potara-lib
  */
 
+// components
+export * from './lib/components/common';
+
 // interfaces
 export * from './lib/interfaces/common';
 

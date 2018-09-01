@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'isl-busy-indicator',
+    selector: 'pot-busy-indicator',
     template: `<div id="overlay">
   <div id="text">{{text}}</div>
 </div>`,

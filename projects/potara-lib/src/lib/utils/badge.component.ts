@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 @Component({
-    selector: 'isl-badge',
+    selector: 'pot-badge',
     template: `<span *ngIf="!popOver" class="badge" title="{{title}}" [ngClass]="state ? trueBadgeClass : falseBadgeClass">
     {{ state ? trueStatus : falseStatus}}</span>
     <span *ngIf="popOver" class="badge" [ngClass]="state ? trueBadgeClass : falseBadgeClass"

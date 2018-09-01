@@ -9,7 +9,6 @@ const storage = {};
  */
 exports.store = (index,value) => {
     storage[index] = value;
-    console.log(storage);
 }
 
 /**

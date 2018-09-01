@@ -15,12 +15,14 @@ import { RoutingState } from '../services/routing-state.service';
 import { ApplicationBackEnd } from '../services/common';
 import { ConfirmModalComponent } from '../utils/confirm-modal.component';
 import LibRoutes from '../models/library/lib-routes';
+import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 
 @NgModule({
     declarations: [
         EnumToListPipe,
         NoElementPipe,
         ReadableSecondsPipe,
+        SafeUrlPipe,
         BusyIndicatorComponent,
         BadgeComponent,
         ConfirmModalComponent
@@ -37,6 +39,7 @@ import LibRoutes from '../models/library/lib-routes';
         EnumToListPipe,
         NoElementPipe,
         ReadableSecondsPipe,
+        SafeUrlPipe,
         BusyIndicatorComponent,
         BadgeComponent
     ],
