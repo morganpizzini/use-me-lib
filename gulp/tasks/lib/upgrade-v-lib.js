@@ -24,8 +24,8 @@ gulp.task('upgrade-v-lib', function (cb) {
         return;
     }
     console.log('Upgrading version, use --skipv for skip');
-    gulp.src('./projects/'+ libNmae +'/package.json')
+    gulp.src('./projects/'+ libName +'/package.json')
         .pipe(bump())
-        .pipe(gulp.dest('./projects/'+ libNmae +'/'))
+        .pipe(gulp.dest('./projects/'+ libName +'/'))
         .on('end', cb);
 });

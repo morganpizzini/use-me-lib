@@ -19,8 +19,14 @@ export abstract class BaseComponent {
     console.error('error on request', response);
     switch (response.status) {
       case 404:
+      // call service to prompt warning
+      this.toast.warning('Please retry..', 'Ops.. Not found!!');
+      break;
+      case 401:
+        // emit unauthorize service
+        this.toast.codeToast.emit('401');
         // call service to prompt warning
-        this.toast.warning('Please retry..', 'Ops.. Not found!!');
+        this.toast.warning('Please re-login..', 'Ops.. Not authenticated!!');
         break;
       default:
         // call service to prompt error

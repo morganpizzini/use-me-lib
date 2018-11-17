@@ -18,6 +18,7 @@ export class RoutingState {
         this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
+                // i'm in homepage
                 if (urlAfterRedirects === '/' || urlAfterRedirects === '') {
                     this.canGoBack = false;
                     this.handleNavigation = false;
@@ -25,7 +26,12 @@ export class RoutingState {
                     return;
                 }
                 let history = this.history.getValue();
-                if (this.handleNavigation) {
+                const querystring = urlAfterRedirects.substr(urlAfterRedirects.indexOf('?'))
+                .toLowerCase();
+                // if navigation come from 'back button' press or
+                // querystring contains 'noback'
+                // handle it and pop last url from history
+                if (this.handleNavigation || querystring.indexOf('noback') >= 0) {
                     this.handleNavigation = false;
                     history.pop();
                 } else {
@@ -46,8 +52,4 @@ export class RoutingState {
     public getHistory(): BehaviorSubject<string[]> {
         return this.history;
     }
-    // public getPreviousUrl(): string {
-    //     const tmp = this.history.getValue();
-    //     return tmp[tmp.length - 2] || '';
-    // }
 }

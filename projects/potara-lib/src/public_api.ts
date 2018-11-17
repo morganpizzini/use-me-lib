@@ -17,5 +17,7 @@ export * from './lib/modules/common';
 // services
 export * from './lib/services/common';
 
-// utils
-export * from './lib/utils/common';
+// extensions
+
+// import './lib/extensions/string.extensions';
+// export * from  './lib/extensions/string.extensions';

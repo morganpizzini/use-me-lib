@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 // import * as toast from 'toastr';
 import * as  toast from 'toastr';
 // declare var toast: any;
 @Injectable()
 export class ToastService {
+
+    codeToast: EventEmitter<string> = new EventEmitter();
 
     constructor() {
         // toast.options = {

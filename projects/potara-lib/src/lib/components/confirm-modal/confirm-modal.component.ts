@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-    selector: 'pkl-confirm-modal',
+    selector: 'pot-confirm-modal',
     template: `<div class="modal-header">
     <h4 class="modal-title">{{title}}</h4>
     <button type="button" class="close" aria-label="Close"  (click)="dismissModal()">
@@ -34,13 +34,13 @@ export class ConfirmModalComponent implements OnInit {
 
     // show confirm button
     @Input()
-    showConfirm: true;
+    showConfirm = true;
     // show message in text-area
     @Input()
-    showInTextArea: false;
+    showInTextArea = false;
     // text-area rows
     @Input()
-    textAreaRows: 2;
+    textAreaRows = 5;
 
     constructor(private _activeModal: NgbActiveModal) { }
     ngOnInit(): void {

@@ -2,9 +2,6 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EnumToListPipe } from '../pipes/enum-to-list.pipe';
-import { BadgeComponent } from '../utils/badge.component';
-import { NoElementPipe } from '../pipes/no-element.pipe';
-import { BusyIndicatorComponent } from '../utils/busy-indicator.component';
 import { ReadableSecondsPipe } from '../pipes/readable-seconds.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EnvironmentInterface } from '../interfaces/environments';
@@ -13,19 +10,27 @@ import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
 import { ApplicationBackEnd } from '../services/common';
-import { ConfirmModalComponent } from '../utils/confirm-modal.component';
-import LibRoutes from '../models/library/lib-routes';
+import { ConfirmModalComponent } from '../components/confirm-modal/confirm-modal.component';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
+import { ElementSelectorPipe } from '../pipes/element-selector.pipe';
+import { NoValuePipe } from '../pipes/no-value.pipe';
+import { OrderByPipe } from '../pipes/order-by.pipe';
+import { BusyIndicatorComponent } from '../components/busy-indicator/busy-indicator.component';
+import { BadgeComponent } from '../components/badge/badge.component';
+import { ImageSpinnerComponent } from '../components/image-spinner/image-spinner.component';
 
 @NgModule({
     declarations: [
         EnumToListPipe,
-        NoElementPipe,
         ReadableSecondsPipe,
         SafeUrlPipe,
+        ElementSelectorPipe,
+        NoValuePipe,
+        OrderByPipe,
         BusyIndicatorComponent,
         BadgeComponent,
-        ConfirmModalComponent
+        ConfirmModalComponent,
+        ImageSpinnerComponent
     ],
     imports: [
         HttpClientModule,
@@ -37,11 +42,14 @@ import { SafeUrlPipe } from '../pipes/safe-url.pipe';
         CommonModule,
         NgbModule,
         EnumToListPipe,
-        NoElementPipe,
+        ElementSelectorPipe,
+        NoValuePipe,
+        OrderByPipe,
         ReadableSecondsPipe,
         SafeUrlPipe,
         BusyIndicatorComponent,
-        BadgeComponent
+        BadgeComponent,
+        ImageSpinnerComponent
     ],
     entryComponents: [
         ConfirmModalComponent
@@ -53,9 +61,10 @@ export class PotaraModule {
         appBackend: ApplicationBackEnd
     )
         : ModuleWithProviders {
-        if (!appBackend || !appBackend.routes || !appBackend.routes[LibRoutes.login] || !appBackend.routes[LibRoutes.signup]) {
-            throw new Error('Some routes are NOT found in configuration, lib required ' + JSON.stringify(LibRoutes));
-        }
+        // todo MOVE AWAY from here!! --prod error if something else than 'return' is written
+        // if (!appBackend || !appBackend.routes || !appBackend.routes[LibRoutes.login] || !appBackend.routes[LibRoutes.signup]) {
+        //     throw new Error('Some routes are NOT found in configuration, lib required ' + JSON.stringify(LibRoutes));
+        // }
         return {
             ngModule: PotaraModule,
             providers: [

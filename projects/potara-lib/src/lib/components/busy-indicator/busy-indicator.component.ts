@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+/**
+ * Default busy indicator template
+ */
 @Component({
     selector: 'pot-busy-indicator',
     template: `<div id="overlay">
@@ -28,10 +31,20 @@ import { Component, Input, OnInit } from '@angular/core';
 }`]
 })
 export class BusyIndicatorComponent implements OnInit {
+    // testo da visualizzare accanto allo spinner
     @Input()
     text: string = null;
+
+    /**
+     * Costruttore
+     */
     constructor() { }
+
+    /**
+     * Inizializzatore
+     */
     ngOnInit(): void {
+        // se l'input text non è valorizzato lo riassegno
         if (!this.text) {
             this.text = 'Loading...';
         }
