@@ -9,7 +9,7 @@ import { RoutingConfigurationService } from '../services/routings/routing-config
 import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
-import { ApplicationBackEnd } from '../services/common';
+import { ApplicationBackEnd, DialogService } from '../services/common';
 import { ConfirmModalComponent } from '../components/confirm-modal/confirm-modal.component';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { ElementSelectorPipe } from '../pipes/element-selector.pipe';
@@ -18,6 +18,7 @@ import { OrderByPipe } from '../pipes/order-by.pipe';
 import { BusyIndicatorComponent } from '../components/busy-indicator/busy-indicator.component';
 import { BadgeComponent } from '../components/badge/badge.component';
 import { ImageSpinnerComponent } from '../components/image-spinner/image-spinner.component';
+import { CanDeactivateGuard } from '../guards/can-deactivate.guard';
 
 @NgModule({
     declarations: [
@@ -71,6 +72,8 @@ export class PotaraModule {
                 RoutingConfigurationService,
                 AuthService,
                 ToastService,
+                DialogService,
+                CanDeactivateGuard,
                 RoutingState,
                 {
                     provide: 'env',

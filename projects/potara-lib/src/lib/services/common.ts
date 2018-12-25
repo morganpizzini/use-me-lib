@@ -1,6 +1,7 @@
 export { HttpClientBase } from './common/http-client-base';
 export { AuthService } from './auth.service';
 export { ToastService } from './toast.service';
+export { DialogService } from './dialog.service';
 // handle all app urls
 
 export { BaseRoute } from './routings/base-route';
