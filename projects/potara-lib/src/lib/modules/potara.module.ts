@@ -19,6 +19,7 @@ import { BusyIndicatorComponent } from '../components/busy-indicator/busy-indica
 import { BadgeComponent } from '../components/badge/badge.component';
 import { ImageSpinnerComponent } from '../components/image-spinner/image-spinner.component';
 import { CanDeactivateGuard } from '../guards/can-deactivate.guard';
+import { InlineEditComponent } from '../components/inline-edit/inline-edit.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { CanDeactivateGuard } from '../guards/can-deactivate.guard';
         OrderByPipe,
         BusyIndicatorComponent,
         BadgeComponent,
+        InlineEditComponent,
         ConfirmModalComponent,
         ImageSpinnerComponent
     ],
@@ -50,6 +52,7 @@ import { CanDeactivateGuard } from '../guards/can-deactivate.guard';
         SafeUrlPipe,
         BusyIndicatorComponent,
         BadgeComponent,
+        InlineEditComponent,
         ImageSpinnerComponent
     ],
     entryComponents: [
