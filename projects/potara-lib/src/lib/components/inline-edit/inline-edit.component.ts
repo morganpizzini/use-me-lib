@@ -46,6 +46,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     if (v !== this._value) {
       this._value = v;
       this.onChange(v);
+      // this.changeDetector.detectChanges();
     }
   }
 
