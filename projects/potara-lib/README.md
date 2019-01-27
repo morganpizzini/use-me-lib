@@ -1,3 +1,5 @@
-# iCubed Sphera Library
+# Potara Library
 
-Common NG Library
+Common NG utility library
+
+README coming soon..
