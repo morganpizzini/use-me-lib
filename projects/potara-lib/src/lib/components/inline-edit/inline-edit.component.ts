@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   forwardRef,
@@ -59,7 +60,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     return this.validateFn(c);
   }
 
-  constructor() {}
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
   // Do stuff when the input element loses focus
   onBlur($event: Event) {
@@ -79,6 +80,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     this.editing = true;
     // Focus on the input element just as the editing begins
     // force layout update
+    this.changeDetector.detectChanges();
 
     this.inlineEditControl.nativeElement.focus();
     // setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl,
@@ -86,11 +88,13 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
   }
   save() {
     this.editing = false;
+    this.changeDetector.detectChanges();
   }
 
   abort() {
     this.inputValue = this.preValue;
     this.editing = false;
+    this.changeDetector.detectChanges();
   }
 
   ngOnInit() {}
