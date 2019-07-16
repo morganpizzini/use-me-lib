@@ -1,4 +1,4 @@
 export interface EnvironmentInterface {
-    apiBaseUrl: string;
+    // apiBaseUrl: string;
     authenticationKey: string;
 }

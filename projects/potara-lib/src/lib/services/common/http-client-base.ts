@@ -5,11 +5,11 @@ import { Observable, Subject } from 'rxjs';
  * Base abstract class for HTTP service
  */
 export abstract class HttpClientBase {
-  constructor(private httpClient: HttpClient, private apiBaseUrl: string) {}
+  constructor(private httpClient: HttpClient, private apiBaseUrl?: string) {}
 
   // url regular expression check
   private urlRegExp = new RegExp(
-    '^(http://www.|https://www.|http://|https://)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$'
+    `^(http:\/\/www.|https:\/\/www.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$`
   );
 
   /**

@@ -20,7 +20,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InlineEditComponent implements ControlValueAccessor, OnInit {
-  @ViewChild('inlineEditControl') inlineEditControl: ElementRef; // input DOM element
+  @ViewChild('inlineEditControl', { static: false }) inlineEditControl: ElementRef; // input DOM element
   @Input() label = ''; // Label value for input element
   @Input() type = 'text'; // The type of input element
   @Input() required = false; // Is input requried?

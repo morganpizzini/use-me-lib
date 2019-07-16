@@ -5,8 +5,8 @@ import { EnumToListPipe } from '../pipes/enum-to-list.pipe';
 import { ReadableSecondsPipe } from '../pipes/readable-seconds.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EnvironmentInterface } from '../interfaces/environments';
-import { RoutingConfigurationService } from '../services/routings/routing-configuration.service';
-import { AuthService } from '../services/auth.service';
+// import { RoutingConfigurationService } from '../services/routings/routing-configuration.service';
+// import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
 import { ApplicationBackEnd, DialogService } from '../services/common';
@@ -62,7 +62,7 @@ import { InlineEditComponent } from '../components/inline-edit/inline-edit.compo
 export class PotaraModule {
     // public static forRoot()
     public static forRoot(environment: EnvironmentInterface,
-        appBackend: ApplicationBackEnd
+        appBackend?: ApplicationBackEnd
     )
         : ModuleWithProviders {
         // todo MOVE AWAY from here!! --prod error if something else than 'return' is written
@@ -72,8 +72,8 @@ export class PotaraModule {
         return {
             ngModule: PotaraModule,
             providers: [
-                RoutingConfigurationService,
-                AuthService,
+                // RoutingConfigurationService,
+                // AuthService,
                 ToastService,
                 DialogService,
                 CanDeactivateGuard,
@@ -81,11 +81,7 @@ export class PotaraModule {
                 {
                     provide: 'env',
                     useValue: environment
-                },
-                {
-                    provide: 'bkend',
-                    useValue: appBackend
-                },
+                }
             ]
         };
     }

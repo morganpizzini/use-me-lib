@@ -1,5 +1,5 @@
 export { HttpClientBase } from './common/http-client-base';
-export { AuthService } from './auth.service';
+// export { AuthService } from './auth.service';
 export { ToastService } from './toast.service';
 export { DialogService } from './dialog.service';
 // handle all app urls
@@ -7,6 +7,6 @@ export { DialogService } from './dialog.service';
 export { BaseRoute } from './routings/base-route';
 export { ApplicationRoute } from './routings/application-route';
 export { ApplicationBackEnd } from './routings/application-backend';
-export { RoutingConfigurationService } from './routings/routing-configuration.service';
+// export { RoutingConfigurationService } from './routings/routing-configuration.service';
 // handle navigation back
 export { RoutingState } from './routing-state.service';

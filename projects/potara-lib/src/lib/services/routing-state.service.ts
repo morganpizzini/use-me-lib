@@ -12,34 +12,33 @@ export class RoutingState {
     public previousUrl = '';
     constructor(
         private router: Router
-    ) { }
-
-    public loadRouting(): void {
-        this.router.events
-            .pipe(filter(event => event instanceof NavigationEnd))
-            .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
-                // i'm in homepage
-                if (urlAfterRedirects === '/' || urlAfterRedirects === '') {
-                    this.canGoBack = false;
-                    this.handleNavigation = false;
-                    this.history.next([urlAfterRedirects]);
-                    return;
-                }
-                let history = this.history.getValue();
-                const querystring = urlAfterRedirects.substr(urlAfterRedirects.indexOf('?'))
-                .toLowerCase();
-                // if navigation come from 'back button' press or
-                // querystring contains 'noback'
-                // handle it and pop last url from history
-                if (this.handleNavigation || querystring.indexOf('noback') >= 0) {
-                    this.handleNavigation = false;
-                    history.pop();
-                } else {
-                    history = history.concat([urlAfterRedirects]);
-                }
-                this.validatePublicProperties(history);
-            });
+    ) {
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
+            // i'm in homepage
+            if (urlAfterRedirects === '/' || urlAfterRedirects === '') {
+                this.canGoBack = false;
+                this.handleNavigation = false;
+                this.history.next([urlAfterRedirects]);
+                return;
+            }
+            let history = this.history.getValue();
+            const querystring = urlAfterRedirects.substr(urlAfterRedirects.indexOf('?'))
+            .toLowerCase();
+            // if navigation come from 'back button' press or
+            // querystring contains 'noback'
+            // handle it and pop last url from history
+            if (this.handleNavigation || querystring.indexOf('noback') >= 0) {
+                this.handleNavigation = false;
+                history.pop();
+            } else {
+                history = history.concat([urlAfterRedirects]);
+            }
+            this.validatePublicProperties(history);
+        });
     }
+
     private validatePublicProperties(history: string[]) {
         this.canGoBack = history.length > 1;
         this.previousUrl = history[history.length - 2] || '';
