@@ -3,22 +3,15 @@
  */
 
 // components
-export * from './lib/components/common';
-
-// interfaces
-export * from './lib/interfaces/common';
-
-// models
-export * from './lib/models/common';
-
-// modules
-export * from './lib/modules/common';
-
-// services
-export * from './lib/services/common';
-
+export * from './lib/components';
 // guards
-export * from './lib/guards/common';
+export * from './lib/guards';
+// interfaces
+export * from './lib/interfaces';
+// modules
+export * from './lib/modules';
+// services
+export * from './lib/services';
 
 // extensions
 

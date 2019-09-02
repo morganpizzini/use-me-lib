@@ -18,7 +18,7 @@ export class ToastService {
      * Show an info taost message
      * @param message  message to show
      */
-    public info(message: string): void {
+    info(message: string): void {
         toast.info(message);
     }
 
@@ -26,7 +26,7 @@ export class ToastService {
      * Show a success taost message
      * @param message  message to show
      */
-    public success(message: string): void {
+    success(message: string): void {
         toast.success(message);
     }
 
@@ -34,7 +34,7 @@ export class ToastService {
      * Show an error taost message
      * @param message  message to show
      */
-    public error(message: string, title?: string): void {
+    error(message: string, title?: string): void {
         toast.error(message, title);
     }
 
@@ -42,7 +42,7 @@ export class ToastService {
      * Show a warning taost message
      * @param message  message to show
      */
-    public warning(message: string, title?: string): void {
+    warning(message: string, title?: string): void {
         toast.warning(message, title);
     }
 
@@ -50,7 +50,7 @@ export class ToastService {
      * Show a coming soon taost message
      * @param message  message to show
      */
-    public comingSoon(): void {
+    comingSoon(): void {
         toast.info('to be implemented');
     }
 }

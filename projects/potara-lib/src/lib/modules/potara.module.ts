@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EnumToListPipe } from '../pipes/enum-to-list.pipe';
@@ -9,7 +9,7 @@ import { EnvironmentInterface } from '../interfaces/environments';
 // import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { RoutingState } from '../services/routing-state.service';
-import { ApplicationBackEnd, DialogService } from '../services/common';
+import { DialogService } from '../services';
 import { ConfirmModalComponent } from '../components/confirm-modal/confirm-modal.component';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { ElementSelectorPipe } from '../pipes/element-selector.pipe';
@@ -20,6 +20,8 @@ import { BadgeComponent } from '../components/badge/badge.component';
 import { ImageSpinnerComponent } from '../components/image-spinner/image-spinner.component';
 import { CanDeactivateGuard } from '../guards/can-deactivate.guard';
 import { InlineEditComponent } from '../components/inline-edit/inline-edit.component';
+import { RouterModule } from '@angular/router';
+import { Environment_Token } from '../tokens/environment-token';
 
 @NgModule({
     declarations: [
@@ -36,12 +38,13 @@ import { InlineEditComponent } from '../components/inline-edit/inline-edit.compo
         ImageSpinnerComponent
     ],
     imports: [
-        HttpClientModule,
+      HttpClientModule,
+      RouterModule,
         CommonModule,
         NgbModule
     ],
     exports: [
-        HttpClientModule,
+      HttpClientModule,
         CommonModule,
         NgbModule,
         EnumToListPipe,
@@ -61,14 +64,9 @@ import { InlineEditComponent } from '../components/inline-edit/inline-edit.compo
 })
 export class PotaraModule {
     // public static forRoot()
-    public static forRoot(environment: EnvironmentInterface,
-        appBackend?: ApplicationBackEnd
+    public static forRoot(environment: EnvironmentInterface
     )
         : ModuleWithProviders {
-        // todo MOVE AWAY from here!! --prod error if something else than 'return' is written
-        // if (!appBackend || !appBackend.routes || !appBackend.routes[LibRoutes.login] || !appBackend.routes[LibRoutes.signup]) {
-        //     throw new Error('Some routes are NOT found in configuration, lib required ' + JSON.stringify(LibRoutes));
-        // }
         return {
             ngModule: PotaraModule,
             providers: [
@@ -79,7 +77,7 @@ export class PotaraModule {
                 CanDeactivateGuard,
                 RoutingState,
                 {
-                    provide: 'env',
+                    provide: Environment_Token,
                     useValue: environment
                 }
             ]
