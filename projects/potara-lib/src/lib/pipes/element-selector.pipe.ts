@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as _ from 'lodash';
 
 /*
  * Select occurence from list and replace string template with obj properties
@@ -16,7 +15,7 @@ export class ElementSelectorPipe implements PipeTransform {
     transform(values: any[], txtProperty: string, valueProperty: string, resultTemplate: string): string {
 
         // filter provided list by txtProperty on valueProperty
-        let result = _.filter(values, o => o[txtProperty] === valueProperty.toString());
+        let result = values.filter(o => o[txtProperty] === valueProperty.toString());
 
         // if result is invalid
         if (!result || result.length === 0) {

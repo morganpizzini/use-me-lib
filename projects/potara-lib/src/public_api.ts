@@ -12,6 +12,10 @@ export * from './lib/interfaces';
 export * from './lib/modules';
 // services
 export * from './lib/services';
+// table handler
+export * from './lib/table-handler';
+// template holder
+export * from './lib/template-holder';
 
 // extensions
 

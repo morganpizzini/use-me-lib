@@ -5,8 +5,10 @@
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
       "toastr":"toastr",
-      "lodash":"_",
-      "@ng-bootstrap/ng-bootstrap":"ngBootstrap"
+      "@ng-bootstrap/ng-bootstrap":"ngBootstrap",
+      "ngx-take-until-destroy":"takeUntil",
+      "@fortawesome/angular-fontawesome":"fontAwesome",
+      "@fortawesome/fontawesome-svg-core":"fontAwesomeSvgCore"
     }
   }
 }

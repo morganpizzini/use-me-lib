@@ -1,0 +1,118 @@
+<ng-container *ngIf="isLoading && models.items.length">
+  <div class="slider-wrapper">
+    <div class="slider">
+      <div class="line"></div>
+      <div class="subline inc"></div>
+      <div class="subline dec"></div>
+    </div>
+  </div>
+</ng-container>
+<div class="input-group">
+  <input
+    type="search"
+    id="searchBox"
+    class="form-control"
+    placeholder="Search..."
+    name="searchBox"
+    [value]="tableSetup.filter"
+    aria-describedby="searchBox"
+    #searchBox
+  />
+</div>
+<div class="mt-table">
+  <div class="row mt-table-head">
+    <div *ngFor="let column of columns" [ngClass]="column.colWidth" class="d-none d-lg-block py-2">
+      <app-col-header
+        [sortProperty]="column.sortProperty || column.value"
+        [sortable]="!column.unSortable"
+        (sortChange)="changeSort($event)"
+        [pageSort]="tableSetup.sort"
+      >
+        <ng-container *ngIf="column.displayedName">
+          {{ column.displayedName }}
+        </ng-container>
+        <ng-container *ngIf="column.template === 'checkboxTemplate'">
+          <ng-container
+            *ngTemplateOutlet="
+              findTemplate(column.template);
+              context: {
+                $implicit: undefined,
+                params: column.params,
+                loading: isLoading || !models.items.length
+              }
+            "
+          >
+          </ng-container>
+        </ng-container>
+      </app-col-header>
+    </div>
+  </div>
+  <div class="mt-table-body">
+    <ng-container *ngIf="isLoading && !models.items.length">
+      <div *ngFor="let column of ghosts" class="row mt-table-rows ghosts">
+        <div class="w-100">
+          <div class="ghost"></div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!isLoading && !models.items.length">
+      <div class="row mt-table-rows text-center">
+        <div class="w-100">
+          <p>{{ translations.noElements }}</p>
+        </div>
+      </div>
+    </ng-container>
+    <div *ngFor="let loopModel of models.items" class="row mt-table-rows">
+      <div *ngFor="let column of columns" [ngClass]="column.colWidth" class="py-1">
+        <ng-container
+          *ngTemplateOutlet="
+            findTemplate(column.template);
+            context: {
+              $implicit: column.value ? parseDotNotation(loopModel, column.value) : loopModel,
+              params: parseParams(loopModel, column.params)
+            }
+          "
+        >
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<app-mt-paging
+  [checkCount]="models.checkedCount"
+  [listLength]="models.itemsCount"
+  [takesItems]="[5, 10, 25, 50]"
+  [page]="tableSetup.page"
+  [take]="tableSetup.take"
+  (pageChange)="pageChange($event)"
+  (takeChange)="takeChange($event)"
+>
+</app-mt-paging>
+
+<ng-template #dateTemplate let-item let-params="params" formeTemplate="dateTemplate">
+  {{ item | date: params.format:params.zone }}
+</ng-template>
+<ng-template #basicTemplate let-item formeTemplate="basicTemplate">{{ item }}</ng-template>
+<ng-template
+  #checkboxTemplate
+  let-item
+  formeTemplate="checkboxTemplate"
+  let-params="params"
+  let-loading="loading"
+>
+  <div class="custom-control custom-checkbox">
+    <input
+      type="checkbox"
+      class="custom-control-input"
+      [checked]="item || models.allChecked"
+      [disabled]="loading || (params && params.disabled)"
+      [id]="params && params.entityToShare ? 'ckBox' + params.entityToShare : 'ckBoxall'"
+      (change)="checkboxChange((item === undefined ? 'checkAll-' : '') + params.entityToShare)"
+    />
+    <label
+      class="custom-control-label"
+      [for]="params && params.entityToShare ? 'ckBox' + params.entityToShare : 'ckBoxall'"
+      >&nbsp;</label
+    >
+  </div>
+</ng-template>

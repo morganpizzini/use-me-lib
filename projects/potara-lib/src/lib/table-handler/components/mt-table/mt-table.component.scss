@@ -1,0 +1,151 @@
+$sizes: (
+  5: 5%,
+  10: 10%,
+  20: 20%,
+  30: 30%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  70: 70%,
+  80: 80%,
+  90: 90%,
+  100: 100%
+);
+
+$sliderHeight: 5px;
+$sliderRadiuis: 5px;
+$sliderBg: #6c757d;
+
+.slider-wrapper {
+  position: relative;
+  height: $sliderHeight;
+
+  .slider {
+    position: absolute;
+    width: 100%;
+    height: $sliderHeight;
+    overflow-x: hidden;
+    border-radius: $sliderRadiuis;
+  }
+
+  .line {
+    position: absolute;
+    opacity: 0.4;
+    background: $sliderBg;
+    width: 150%;
+    height: $sliderHeight;
+    border-radius: $sliderRadiuis;
+  }
+
+  .subline {
+    position: absolute;
+    background: $sliderBg;
+    height: $sliderHeight;
+  }
+  .inc {
+    animation: increase 2s infinite;
+  }
+  .dec {
+    animation: decrease 2s 0.5s infinite;
+  }
+}
+
+@keyframes increase {
+  from {
+    left: -5%;
+    width: 5%;
+  }
+  to {
+    left: 130%;
+    width: 100%;
+  }
+}
+@keyframes decrease {
+  from {
+    left: -80%;
+    width: 80%;
+  }
+  to {
+    left: 110%;
+    width: 10%;
+  }
+}
+
+.mt-table {
+  @each $size, $length in $sizes {
+    .row {
+      > .w-#{$size} {
+        width: $length !important;
+        padding: 0 15px;
+      }
+    }
+  }
+  .mt-table-rows {
+    &:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    padding: 0.5rem 0;
+
+    &:not(.ghosts):hover {
+      background-color: rgba(
+        $color: (
+          #14a5ff
+        ),
+        $alpha: 0.15
+      );
+    }
+  }
+}
+
+$base-color: rgba(240, 240, 240, 0.863);
+$ghost-color: #ecebebf1;
+$animation-duration: 1000ms;
+$gradient-offset: 52 + 16;
+
+@mixin background-gradient {
+  background-image: linear-gradient(90deg, $base-color 0px, $ghost-color 40px, $base-color 80px);
+  background-size: 80vw;
+}
+
+@keyframes ghost-lines {
+  0% {
+    background-position: -100px;
+  }
+  40% {
+    background-position: 40vw;
+  }
+  100% {
+    background-position: 60vw;
+  }
+}
+
+@keyframes ghost-avatar {
+  0% {
+    background-position: -100px + $gradient-offset;
+  }
+  40%,
+  100% {
+    background-position: 140px + $gradient-offset;
+  }
+}
+
+@mixin animate-ghost-avatar {
+  @include background-gradient;
+  animation: ghost-avatar $animation-duration infinite linear;
+}
+
+@mixin animate-ghost-line {
+  animation: ghost-lines $animation-duration infinite linear;
+}
+
+.ghost {
+  margin: 0;
+  margin-top: 0;
+  align-content: center;
+  background-color: gray;
+  border-bottom: 3px solid white;
+  border-radius: 4px 4px 4px 4px;
+  @include background-gradient;
+  @include animate-ghost-line;
+  height: 40px;
+}
