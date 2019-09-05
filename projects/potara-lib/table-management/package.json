@@ -1,0 +1,13 @@
+{
+    "name": "potara-lib/table-management",
+    "ngPackage": {
+      "lib": {
+        "umdModuleIds": {
+          "toastr":"toastr",
+          "ngx-take-until-destroy":"takeUntil",
+          "@fortawesome/angular-fontawesome":"fontAwesome",
+          "potara-lib/public_api":"potara-lib"
+        }
+      }
+  }
+}

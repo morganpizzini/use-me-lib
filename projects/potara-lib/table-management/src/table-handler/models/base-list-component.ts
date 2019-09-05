@@ -1,12 +1,12 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BaseComponent, ToastService } from 'potara-lib';
+// import { BaseComponent, ToastService } from 'potara-lib';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TableTranslation } from './page-translation';
 import { TableColumn } from './table-column';
 import { TablePageContent } from './table-page-content';
 import { TablePageSetup } from './table-page-setup';
-import { BaseComponent } from '../../components';
-import { ToastService } from '../../services';
 
 /**
  * base list page component class

@@ -1,6 +1,6 @@
 {
   "name": "potara-lib",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "author": "Morgan Pizzini",
   "license": "MIT",
   "keywords": [
@@ -15,7 +15,7 @@
     "@ng-bootstrap/ng-bootstrap": ">=4.0.0",
     "toastr": "^2.1.4",
     "ngx-take-until-destroy": ">=5.4.0",
-    "@fortawesome/angular-fontawesome": ">=^0.4.0",
+    "@fortawesome/angular-fontawesome": ">=0.4.0",
     "@fortawesome/fontawesome-svg-core": ">1.2.0"
   }
 }

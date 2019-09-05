@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.lib.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "../",
+    "paths": {
+      "potara-lib": [
+        "../../../dist/potara-lib"
+      ]
+    },
+    "outDir": "../../../out-tsc/lib"
+  },
+  "files": [
+    "public_api.ts"
+  ],
+}

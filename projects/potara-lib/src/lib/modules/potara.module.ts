@@ -22,8 +22,6 @@ import { RoutingState } from '../services/routing-state.service';
 // import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { Environment_Token } from '../tokens/environment-token';
-import { TableHandlerModule } from '../table-handler';
-import { TemplateHolderModule } from '../template-holder';
 
 @NgModule({
   declarations: [
@@ -53,9 +51,7 @@ import { TemplateHolderModule } from '../template-holder';
     BusyIndicatorComponent,
     BadgeComponent,
     InlineEditComponent,
-    ImageSpinnerComponent,
-    TableHandlerModule,
-    TemplateHolderModule
+    ImageSpinnerComponent
   ],
   entryComponents: [ConfirmModalComponent]
 })
