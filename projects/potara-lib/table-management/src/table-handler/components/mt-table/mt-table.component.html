@@ -68,8 +68,8 @@
           *ngTemplateOutlet="
             findTemplate(column.template);
             context: {
-              $implicit: column.value ? parseDotNotation(loopModel, column.value) : loopModel,
-              params: parseParams(loopModel, column.params)
+              $implicit: column.value ? (loopModel | parseDotNotation:column.value) : loopModel,
+              params: (loopModel | parseColumnParams:column.params)
             }
           "
         >

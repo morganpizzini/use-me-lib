@@ -15,6 +15,7 @@ import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, skip, startWith } from 'rxjs/operators';
 import { FormeTemplateService } from '../../../template-holder';
 import { TablePageContent, TablePageSetup, TableTranslation, TableColumnParams } from '../../models';
+import { parseDotNotation } from '../../functions/parse-dot-notation';
 
 /**
  * MT Table base component
@@ -144,42 +145,6 @@ export class MtTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * dot notation parser
-   */
-  parseDotNotation(data: any, field: string): any {
-    if (data && field) {
-      if (field.indexOf('.') === -1) {
-        return data[field];
-      } else {
-        const fields: string[] = field.split('.');
-        let value = data;
-        for (let i = 0, len = fields.length; i < len; ++i) {
-          if (value == null) {
-            return null;
-          }
-          value = value[fields[i]];
-        }
-        return value;
-      }
-    } else {
-      return null;
-    }
-  }
-
-  /**
-   * params parser
-   */
-  parseParams(data: any, params: TableColumnParams) {
-    if (!params) {
-      return undefined;
-    }
-    if (params.entityToShare) {
-      return { ...params, entityToShare: this.parseDotNotation(data, params.entityToShare) };
-    }
-    return params;
-  }
-
-  /**
    * checkbox change
    * @param $event event
    */
@@ -187,7 +152,7 @@ export class MtTableComponent implements OnInit, AfterViewInit, OnDestroy {
     // if checkbox all select all current element list
     if ($event.startsWith('checkAll-')) {
       const idProperty = $event.replace('checkAll-', '');
-      $event = this.models.items.map(x => this.parseDotNotation(x, idProperty));
+      $event = this.models.items.map(x => parseDotNotation(x, idProperty));
     }
     this.checkboxOutput.emit($event);
   }

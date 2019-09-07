@@ -42,9 +42,9 @@ export class BaseListComponent extends BaseComponent {
   /**
    * Compose column array function
    */
-  protected mapColumn(cols: Observable<TableColumn[]>): Observable<TableColumn[]> {
+  protected mapColumn<T>(cols: Observable<TableColumn<T>[]>): Observable<TableColumn<T>[]> {
     return cols.pipe(
-      map((columns: TableColumn[]) =>
+      map((columns: TableColumn<T>[]) =>
         columns.map(x => {
           if (typeof x.width === 'string') {
             x.colWidth = 'w-' + x.width;
