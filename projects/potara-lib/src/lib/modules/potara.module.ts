@@ -18,8 +18,6 @@ import { ReadableSecondsPipe } from '../pipes/readable-seconds.pipe';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { DialogService } from '../services';
 import { RoutingState } from '../services/routing-state.service';
-// import { RoutingConfigurationService } from '../services/routings/routing-configuration.service';
-// import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { Environment_Token } from '../tokens/environment-token';
 
