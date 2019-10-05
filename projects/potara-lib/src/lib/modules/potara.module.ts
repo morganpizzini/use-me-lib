@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BadgeComponent } from '../components/badge/badge.component';
 import { BusyIndicatorComponent } from '../components/busy-indicator/busy-indicator.component';
@@ -16,7 +15,7 @@ import { NoValuePipe } from '../pipes/no-value.pipe';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { ReadableSecondsPipe } from '../pipes/readable-seconds.pipe';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
-import { DialogService } from '../services';
+import { DialogService } from '../services/dialog.service';
 import { RoutingState } from '../services/routing-state.service';
 import { ToastService } from '../services/toast.service';
 import { Environment_Token } from '../tokens/environment-token';

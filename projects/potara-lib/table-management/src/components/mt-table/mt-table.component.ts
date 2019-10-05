@@ -13,7 +13,7 @@ import {
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, skip, startWith } from 'rxjs/operators';
-import { FormeTemplateService } from '../../../template-holder';
+import { FormeTemplateService } from 'potara-lib/template-holder';
 import { TablePageContent, TablePageSetup, TableTranslation, TableColumnParams } from '../../models';
 import { parseDotNotation } from '../../functions/parse-dot-notation';
 

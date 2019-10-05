@@ -9,7 +9,7 @@ export * from './lib/guards';
 // interfaces
 export * from './lib/interfaces';
 // modules
-export * from './lib/modules';
+export * from './lib/modules/potara.module';
 // services
 export * from './lib/services';
 

@@ -1,20 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { PotaraModule } from 'projects/potara-lib/src/public_api';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { PotaraModule } from 'potara-lib';
+import { TableManagementModule } from 'potara-lib/table-management';
+import { TemplateHolderModule } from 'potara-lib/template-holder';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
-    PotaraModule
+    PotaraModule.forRoot({ noGoBackRoutes: ['test'] }),
+    TableManagementModule,
+    TemplateHolderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
