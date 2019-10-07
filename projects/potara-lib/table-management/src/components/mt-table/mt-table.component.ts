@@ -21,7 +21,7 @@ import { parseDotNotation } from '../../functions/parse-dot-notation';
  * MT Table base component
  */
 @Component({
-  selector: 'app-mt-table',
+  selector: 'pot-mt-table',
   templateUrl: './mt-table.component.html',
   styleUrls: ['./mt-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

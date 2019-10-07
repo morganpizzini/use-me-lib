@@ -11,7 +11,7 @@ import {
  * MT Paging controller
  */
 @Component({
-  selector: 'app-mt-paging',
+  selector: 'pot-mt-paging',
   templateUrl: './mt-paging.component.html',
   styleUrls: ['./mt-paging.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

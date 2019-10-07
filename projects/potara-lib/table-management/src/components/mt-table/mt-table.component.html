@@ -78,7 +78,7 @@
     </div>
   </div>
 </div>
-<app-mt-paging
+<pot-mt-paging
   [checkCount]="models.checkedCount"
   [listLength]="models.itemsCount"
   [takesItems]="[5, 10, 25, 50]"
@@ -87,7 +87,7 @@
   (pageChange)="pageChange($event)"
   (takeChange)="takeChange($event)"
 >
-</app-mt-paging>
+</pot-mt-paging>
 
 <ng-template #dateTemplate let-item let-params="params" formeTemplate="dateTemplate">
   {{ item | date: params.format:params.zone }}
