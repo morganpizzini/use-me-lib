@@ -23,9 +23,9 @@ export class BaseListComponent extends BaseComponent {
   list$: Observable<TablePageContent>;
 
   /**
-   * page table translations
+   * page table translations dictionary
    */
-  translations: TableTranslation;
+  translationsDict: TableTranslation;
 
   /**
    * table setup

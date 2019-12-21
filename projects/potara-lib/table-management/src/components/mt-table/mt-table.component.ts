@@ -52,10 +52,10 @@ export class MtTableComponent implements OnInit, AfterViewInit, OnDestroy {
   tableSetup: TablePageSetup;
 
   /**
-   * translations
+   * translations dictionary
    */
   @Input()
-  translations: TableTranslation = {
+  translationsDict: TableTranslation = {
     noElements: 'No items'
   };
 
